@@ -1,8 +1,6 @@
 import * as React from "react";
-import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Page from "./Page";
-import Start from "./Start";
 
 export interface IProps {
   questions: Array<{
@@ -10,17 +8,17 @@ export interface IProps {
   }>;
 }
 
-const App = styled.div`
+const Page = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: Helvetica;
 `;
 
 const Component: React.ComponentType<IProps> = ({ questions }) => (
-  <App>
-    <Route exact={true} path="/" component={Start} />
-    <Route path="/page/:pageNumber" component={Page} />
-  </App>
+  <Page>
+    <h1>Welcome to the Survey</h1>
+    <p>It's {questions.length} questions long</p>
+    <Link to={"/page/1"}>Start</Link>
+  </Page>
 );
 
 export default Component;

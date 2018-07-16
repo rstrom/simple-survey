@@ -6,7 +6,7 @@ import questions from "./questions.json";
 import registerServiceWorker from "./registerServiceWorker";
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/simple-survey">
     <App questions={questions} />
   </BrowserRouter>,
   document.getElementById("root") as HTMLElement
