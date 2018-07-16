@@ -1,5 +1,6 @@
 {
   "name": "simple-survey",
+  "homepage": "https://rstrom.github.io/simple-survey",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
