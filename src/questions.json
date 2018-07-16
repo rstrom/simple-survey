@@ -1,0 +1,16 @@
+[
+  {
+    "type": "string"
+  },
+  {
+    "type": "string",
+    "enum": ["foo", "bar", "baz"]
+  },
+  {
+    "type": "array",
+    "items": {
+      "type": "string",
+      "enum": ["spam", "ham", "eggs"]
+    }
+  }
+]
