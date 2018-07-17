@@ -13,19 +13,37 @@ describe("User experience of responding to survey", () => {
     cy.get('input[type="text"]');
   });
 
-  it("2. one queastion w/ a Dropdown (several options, one selectable)", () => {
+  it("2. one question w/ a Dropdown (several options, one selectable)", () => {
     cy.visit("/page/2");
     cy.get("option").should("have.length.above", 1);
   });
 
-  it("3. one queastion w/ Radio buttons (multiple inputs, one selectable)", () => {
+  it("3. one question w/ Radio buttons (multiple inputs, one selectable)", () => {
     cy.visit("/page/3");
     cy.get('input[type="radio"]').should("have.length.above", 1);
   });
 
-  it("Each page has one back button (if not on the first page & disabled if w/o input)", () => {});
+  it("Each page has one back button (if not on the first page & disabled if w/o input)", () => {
+    cy.visit("/page/1");
+    cy.get("button.back").should("have.attr", "disabled");
+    cy.get("input").type("Satoshi");
+    cy.get("button.back").should("not.have.attr", "disabled");
+    cy.get("button.back").click();
+    cy.location().should(loc => {
+      expect(loc.pathname).to.eq("/");
+    });
+  });
 
-  it("Each page has one next button (if not on summary & disabled if w/o input)", () => {});
+  it("Each page has one next button (if not on summary & disabled if w/o input)", () => {
+    cy.visit("/page/1");
+    cy.get("button.next").should("have.attr", "disabled");
+    cy.get("input").type("Satoshi");
+    cy.get("button.next").should("not.have.attr", "disabled");
+    cy.get("button.next").click();
+    cy.location().should(loc => {
+      expect(loc.pathname).to.eq("/page/2");
+    });
+  });
 
   it("When finished, the last page shows a summary of questions with answers", () => {});
 
