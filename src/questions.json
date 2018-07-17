@@ -1,16 +1,16 @@
 [
   {
-    "type": "string"
+    "component": "TextField",
+    "label": "What is your name?"
   },
   {
-    "type": "string",
-    "enum": ["foo", "bar", "baz"]
+    "component": "Dropdown",
+    "label": "Where are you from?",
+    "values": ["Europe", "Americas", "Africa", "Asia", "Oceania"]
   },
   {
-    "type": "array",
-    "items": {
-      "type": "string",
-      "enum": ["spam", "ham", "eggs"]
-    }
+    "component": "Radio",
+    "label": "What is your favorite color?",
+    "values": ["Red", "Green", "Blue"]
   }
 ]

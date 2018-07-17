@@ -20,6 +20,7 @@ const Page = styled.div`
 `;
 
 const Component: React.ComponentType<IProps> = ({
+  children,
   match: {
     params: { pageNumber }
   },
@@ -27,7 +28,8 @@ const Component: React.ComponentType<IProps> = ({
 }) => (
   <Page>
     <h1>Page {pageNumber}</h1>
-    <p>{get(questions, `${pageNumber - 1}.type`, "Not found")}</p>
+    <p>{get(questions, `${pageNumber - 1}.label`, "Not found")}</p>
+    {children}
     <Link to={`/page/${Number(pageNumber) + 1}`}>Submit</Link>
   </Page>
 );

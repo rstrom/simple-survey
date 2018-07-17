@@ -16,7 +16,7 @@ const App = styled.div`
   font-family: Helvetica;
 `;
 
-const Component: React.ComponentType<IProps> = ({ questions }) => (
+const Component: React.ComponentType<IProps> = () => (
   <App>
     <Route exact={true} path="/" component={Start} />
     <Route path="/page/:pageNumber" component={Page} />
