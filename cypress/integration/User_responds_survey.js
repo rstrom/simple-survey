@@ -3,13 +3,25 @@ describe("User experience of responding to survey", () => {
     cy.visit("/");
   });
 
-  it("The survey consists of multiple pages", () => {});
+  it("The survey consists of multiple pages", () => {
+    cy.visit("/page/1");
+    cy.visit("/page/2");
+  });
 
-  it("1. one question w/ a Text input field", () => {});
+  it("1. one question w/ a Text input field", () => {
+    cy.visit("/page/1");
+    cy.get('input[type="text"]');
+  });
 
-  it("2. one queastion w/ a Dropdown (several options, one selectable)", () => {});
+  it("2. one queastion w/ a Dropdown (several options, one selectable)", () => {
+    cy.visit("/page/2");
+    cy.get("option").should("have.length.above", 1);
+  });
 
-  it("3. one queastion w/ Radio buttons (multiple inputs, one selectable)", () => {});
+  it("3. one queastion w/ Radio buttons (multiple inputs, one selectable)", () => {
+    cy.visit("/page/3");
+    cy.get('input[type="radio"]').should("have.length.above", 1);
+  });
 
   it("Each page has one back button (if not on the first page & disabled if w/o input)", () => {});
 
