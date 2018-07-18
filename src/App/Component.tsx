@@ -47,9 +47,9 @@ const Page = styled.div`
   ${color};
 `;
 
-const Component: React.ComponentType<IProps> = () => (
+const Component: React.ComponentType<IProps> = ({ questions }) => (
   <App bg="white" fontSize={["1rem", "1rem", "1.25rem"]}>
-    <Page bg="white" p={["2rem", "2rem", "1rem"]} width={[1, 3 / 5, 3 / 7]}>
+    <Page p={["2rem", "2rem", "1rem"]} width={[1, 3 / 5, 3 / 7]}>
       <Route exact={true} path="/" component={Start} />
       <Route path="/page/:pageNumber" component={Question} />
       <Route exact={true} path="/summary" component={Summary} />
