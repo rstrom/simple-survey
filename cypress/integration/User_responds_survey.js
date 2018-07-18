@@ -1,8 +1,4 @@
 describe("User experience of responding to survey", () => {
-  beforeEach(() => {
-    cy.visit("/");
-  });
-
   it("The survey consists of multiple pages", () => {
     cy.visit("/page/1");
     cy.visit("/page/2");
@@ -45,9 +41,43 @@ describe("User experience of responding to survey", () => {
     });
   });
 
-  it("When finished, the last page shows a summary of questions with answers", () => {});
+  it("When finished, the last page shows a summary of questions with answers", () => {
+    cy.visit("/page/1");
+    cy.get("input").type("Satoshi");
+    cy.get("button.next").click();
+    cy.get("select").select("Asia");
+    cy.get("button.next").click();
+    cy.get("label")
+      .contains("Red")
+      .click();
+    cy.get("button.next").click();
+    cy.get(".summary").contains("Satoshi");
+    cy.get(".summary").contains("Asia");
+    cy.get(".summary").contains("Red");
+  });
 
-  it("When closing the browser window and reopening it, the progress with it’s data is restored", () => {});
+  it("When closing the browser window and reopening it, the progress with it’s data is restored", () => {
+    cy.visit("/page/1");
+    cy.get("input").type("Satoshi");
+    cy.reload();
+    cy.get("input").should("have.value", "Satoshi");
+  });
 
-  it("The survey can be browsed using the native browser back / next button", () => {});
+  it("The survey can be browsed using the native browser back / next button", () => {
+    cy.visit("/");
+    cy.get("a")
+      .contains("Start")
+      .click();
+    cy.location().should(loc => {
+      expect(loc.pathname).to.eq("/simple-survey/page/1");
+    });
+    cy.go("back");
+    cy.location().should(loc => {
+      expect(loc.pathname).to.eq("/simple-survey/");
+    });
+    cy.go("forward");
+    cy.location().should(loc => {
+      expect(loc.pathname).to.eq("/simple-survey/page/1");
+    });
+  });
 });
