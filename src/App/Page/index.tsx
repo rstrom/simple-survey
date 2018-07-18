@@ -10,6 +10,7 @@ import Component from "./Component";
 
 interface IProps {
   history: History;
+  responses: object;
   respond(index: number, value: string): void;
 }
 
@@ -30,11 +31,13 @@ export default compose(
     const componentType = get(props, `questions.${pageNumber - 1}.component`);
     const InputComponent = get(InputComponents, componentType);
     const question = get(props, `questions.${pageNumber - 1}`);
+    const response = props.responses[Number(pageNumber) - 1];
     return {
       ...props,
       children: (
         <InputComponent
           {...question}
+          defaultValue={response}
           onChange={(value: string) =>
             props.respond(Number(pageNumber) - 1, value)
           }

@@ -20,6 +20,9 @@ describe("User experience of responding to survey", () => {
   });
 
   it("Each page has one back button (if not on the first page & disabled if w/o input)", () => {
+    cy.window().then(win => {
+      win.sessionStorage.clear();
+    });
     cy.visit("/page/1");
     cy.get("button.back").should("have.attr", "disabled");
     cy.get("input").type("Satoshi");
@@ -31,6 +34,9 @@ describe("User experience of responding to survey", () => {
   });
 
   it("Each page has one next button (if not on summary & disabled if w/o input)", () => {
+    cy.window().then(win => {
+      win.sessionStorage.clear();
+    });
     cy.visit("/page/1");
     cy.get("button.next").should("have.attr", "disabled");
     cy.get("input").type("Satoshi");
@@ -57,6 +63,9 @@ describe("User experience of responding to survey", () => {
   });
 
   it("When closing the browser window and reopening it, the progress with it’s data is restored", () => {
+    cy.window().then(win => {
+      win.sessionStorage.clear();
+    });
     cy.visit("/page/1");
     cy.get("input").type("Satoshi");
     cy.reload();

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export interface IProps {
   values: string[];
+  defaultValue: string;
   onChange(value: string): void;
 }
 
@@ -16,11 +17,20 @@ const Radio = styled.div.attrs({ className: "radio" })`
   }
 `;
 
-const Component: React.ComponentType<IProps> = ({ values, onChange }) => (
+const Component: React.ComponentType<IProps> = ({
+  values,
+  defaultValue,
+  onChange
+}) => (
   <Radio onChange={e => onChange((e.target as HTMLInputElement).value)}>
     {values.map((value, i) => (
       <label key={i}>
-        <input value={value} type="radio" name="group" />
+        <input
+          value={value}
+          type="radio"
+          name="group"
+          defaultChecked={value === defaultValue}
+        />
         {value}
       </label>
     ))}
