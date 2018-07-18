@@ -16,7 +16,11 @@ const Component: React.ComponentType<IProps> = ({
   values,
   onChange
 }) => (
-  <Dropdown onChange={e => onChange(e.target.value)} value={defaultValue}>
+  <Dropdown
+    innerRef={ref => ref && ref.focus()}
+    onChange={e => onChange(e.target.value)}
+    value={defaultValue}
+  >
     <option disabled={true} selected={true}>
       {" "}
       -- select an option --{" "}

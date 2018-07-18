@@ -29,6 +29,7 @@ const Component: React.ComponentType<IProps> = ({
           value={value}
           type="radio"
           name="group"
+          ref={ref => (value === defaultValue || i === 0) && ref && ref.focus()}
           defaultChecked={value === defaultValue}
         />
         {value}

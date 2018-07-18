@@ -12,6 +12,7 @@ const TextField = styled.input.attrs({ className: "text-field", type: "text" })`
 
 const Component: React.ComponentType<IProps> = ({ onChange, defaultValue }) => (
   <TextField
+    innerRef={ref => ref && ref.focus()}
     onChange={e => onChange(e.target.value)}
     defaultValue={defaultValue}
   />

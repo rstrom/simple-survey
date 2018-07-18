@@ -67,7 +67,11 @@ const Component: React.ComponentType<IProps> = ({
   question,
   responses
 }) => (
-  <Wrapper>
+  <Wrapper
+    onKeyPress={e =>
+      e.key === "Enter" && !!responses[Number(pageNumber) - 1] && handleNext()
+    }
+  >
     <ProgressBackground bg="black">
       <ProgressBar
         bg="blue"
