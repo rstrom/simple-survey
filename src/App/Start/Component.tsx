@@ -14,6 +14,8 @@ const Page = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  background: #fff;
+  padding-bottom: 1rem;
 `;
 
 const Text = styled.div`
@@ -25,10 +27,10 @@ const Text = styled.div`
 
 const Component: React.ComponentType<IProps> = ({ questions }) => (
   <Page>
-    <Text m="1rem 0" fontSize="1.25em" fontWeight="500">
+    <Text p="1rem 0" fontSize="1.25em" fontWeight="600">
       Welcome to our survey
     </Text>
-    <Text m="1rem 0">It's {questions.length} questions long</Text>
+    <Text p="1rem 0">It's {questions.length} questions long.</Text>
     <Link to={"/page/1"}>
       <Button
         flex="0 0 auto"
@@ -37,7 +39,7 @@ const Component: React.ComponentType<IProps> = ({ questions }) => (
         borderColor="blue"
         border="1px solid"
       >
-        Start the survey ->
+        Start the survey
       </Button>
     </Link>
   </Page>

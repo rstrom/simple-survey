@@ -14,6 +14,12 @@ const Radio = styled.div.attrs({ className: "radio" })`
 
   & label {
     flex: 1 0 auto;
+    margin: 0.5rem 0;
+    cursor: pointer;
+  }
+
+  & input {
+    margin-right: 1rem;
   }
 `;
 

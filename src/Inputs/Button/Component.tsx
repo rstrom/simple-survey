@@ -15,12 +15,13 @@ export default styled.button`
   ${alignSelf};
   ${justifySelf};
   ${color};
+  font-size: 0.875em;
   ${fontSize};
   ${borders};
   ${borderColor};
   padding: 6px 16px;
   ${space};
-  border-radius: 0.2rem;
+  border-radius: 3px;
   box-shadow: 0 0.25rem 1rem rgba(127, 127, 127, 0.05);
   pointer-events: ${p => (p.disabled ? "none" : "auto")};
   cursor: pointer;

@@ -9,6 +9,7 @@ export interface IProps {
 
 const Dropdown = styled.select.attrs({ className: "dropdown" })`
   flex: 1 0 auto;
+  font-size: 1em;
 `;
 
 const Component: React.ComponentType<IProps> = ({

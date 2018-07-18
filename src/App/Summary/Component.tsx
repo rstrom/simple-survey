@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { color, fontSize, fontWeight, space } from "styled-system";
 
 export interface IProps {
   questions: Array<{
@@ -15,14 +16,24 @@ const Summary = styled.div.attrs({ className: "summary" })`
   flex-direction: column;
 `;
 
+const Text = styled.div`
+  ${space}
+  ${fontSize}
+  ${fontWeight}
+  ${color}
+`;
+
 const Component: React.ComponentType<IProps> = ({ questions, responses }) => (
   <Summary>
-    <h1>Thanks for answering our survey!</h1>
-    <p>Here are your responses:</p>
+    <Text fontSize="1.25em" fontWeight="bold" m="1rem 0">
+      Thanks!
+    </Text>
+    <Text mb="2rem">Here are your responses:</Text>
     {questions.map(({ label }, i) => (
-      <p key={i}>
-        <i>{label}</i> {responses[i]}
-      </p>
+      <Text key={i} p="2rem" bg="#fff">
+        <Text color="#aaa">{label}</Text>
+        <Text>{responses[i]}</Text>
+      </Text>
     ))}
   </Summary>
 );

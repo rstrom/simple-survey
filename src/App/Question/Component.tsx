@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { color, fontSize, space } from "styled-system";
+import { color, fontSize, fontWeight, space } from "styled-system";
 import Button from "../../Inputs/Button";
 
 export interface IProps {
@@ -53,6 +53,7 @@ const Question = styled.div`
 const Text = styled.div`
   ${space}
   ${fontSize}
+  ${fontWeight}
   ${color}
 `;
 
@@ -85,13 +86,16 @@ const Component: React.ComponentType<IProps> = ({
     >
       Back
     </Button>
-    <Question bg="#fff" m="1rem" p="1rem" width={[1, 1 / 2, 1 / 4]}>
-      <Text fontSize="0.875em" color="gray">
+    <Question bg="#fff" m="1rem 0" p="1rem" width={[1, 1 / 2, 1 / 4]}>
+      <Text mb="1rem" fontSize="0.875em" color="gray">
         Question {pageNumber} of {questions.length}
       </Text>
-      <Text>{question.label}</Text>
+      <Text mb="2rem" fontWeight="600">
+        {question.label}
+      </Text>
       {children}
       <Button
+        mt="1rem"
         flex="0 0 auto"
         alignSelf="flex-end"
         bg="white"
