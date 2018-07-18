@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import styled from "styled-components";
 import Page from "./Page";
 import Start from "./Start";
+import Summary from "./Summary";
 
 export interface IProps {
   questions: Array<{
@@ -20,6 +21,7 @@ const Component: React.ComponentType<IProps> = () => (
   <App>
     <Route exact={true} path="/" component={Start} />
     <Route path="/page/:pageNumber" component={Page} />
+    <Route exact={true} path="/summary" component={Summary} />
   </App>
 );
 
