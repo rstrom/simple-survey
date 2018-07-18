@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { color, fontSize, space } from "styled-system";
+import Button from "../../Inputs/Button";
 
 export interface IProps {
   match: {
@@ -55,10 +56,6 @@ const Text = styled.div`
   ${color}
 `;
 
-const Button = styled.button`
-  pointer-events: ${p => (p.disabled ? "none" : "auto")};
-`;
-
 const Component: React.ComponentType<IProps> = ({
   children,
   handleBack,
@@ -91,6 +88,11 @@ const Component: React.ComponentType<IProps> = ({
       <Text>{question.label}</Text>
       {children}
       <Button
+        flex="0 0 auto"
+        alignSelf="flex-end"
+        bg="white"
+        borderColor="blue"
+        border="1px solid"
         className="next"
         onClick={handleNext}
         disabled={!responses[Number(pageNumber) - 1]}

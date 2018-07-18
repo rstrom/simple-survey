@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { color, fontSize, fontWeight, space } from "styled-system";
+import Button from "../../Inputs/Button";
 
 export interface IProps {
   questions: Array<{
@@ -11,13 +13,33 @@ export interface IProps {
 const Page = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
+`;
+
+const Text = styled.div`
+  ${space}
+  ${fontSize}
+  ${fontWeight}
+  ${color}
 `;
 
 const Component: React.ComponentType<IProps> = ({ questions }) => (
   <Page>
-    <h1>Welcome to our survey</h1>
-    <p>It's {questions.length} questions long</p>
-    <Link to={"/page/1"}>Start the survey -></Link>
+    <Text m="1rem 0" fontSize="1.25em" fontWeight="500">
+      Welcome to our survey
+    </Text>
+    <Text m="1rem 0">It's {questions.length} questions long</Text>
+    <Link to={"/page/1"}>
+      <Button
+        flex="0 0 auto"
+        mt="2rem"
+        bg="white"
+        borderColor="blue"
+        border="1px solid"
+      >
+        Start the survey ->
+      </Button>
+    </Link>
   </Page>
 );
 
