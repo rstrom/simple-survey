@@ -15,9 +15,9 @@ const Page = styled.div`
 
 const Component: React.ComponentType<IProps> = ({ questions }) => (
   <Page>
-    <h1>Welcome to the Survey</h1>
+    <h1>Welcome to our survey</h1>
     <p>It's {questions.length} questions long</p>
-    <Link to={"/page/1"}>Start</Link>
+    <Link to={"/page/1"}>Start the survey -></Link>
   </Page>
 );
 

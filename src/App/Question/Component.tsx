@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { color, space } from "styled-system";
 
 export interface IProps {
   match: {
@@ -15,9 +16,14 @@ export interface IProps {
   handleNext(): void;
 }
 
-const Page = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 0 0 auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+  ${space};
+  ${color};
 `;
 
 const Button = styled.button`
@@ -34,7 +40,7 @@ const Component: React.ComponentType<IProps> = ({
   question,
   responses
 }) => (
-  <Page>
+  <div>
     <Button
       className="back"
       onClick={handleBack}
@@ -42,17 +48,18 @@ const Component: React.ComponentType<IProps> = ({
     >
       Back
     </Button>
-    <h1>Page {pageNumber}</h1>
-    <p>{question.label}</p>
-    {children}
-    <Button
-      className="next"
-      onClick={handleNext}
-      disabled={!responses[Number(pageNumber) - 1]}
-    >
-      Next
-    </Button>
-  </Page>
+    <Wrapper bg="#fff" m="1rem" p="1rem" width={[1, 1 / 2, 1 / 4]}>
+      <p>{question.label}</p>
+      {children}
+      <Button
+        className="next"
+        onClick={handleNext}
+        disabled={!responses[Number(pageNumber) - 1]}
+      >
+        Next
+      </Button>
+    </Wrapper>
+  </div>
 );
 
 export default Component;
