@@ -8,6 +8,7 @@
     "@types/prop-types": "^15.5.3",
     "@types/react-router-dom": "^4.2.7",
     "@types/recompose": "^0.26.1",
+    "history": "^4.7.2",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",

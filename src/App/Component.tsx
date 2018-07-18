@@ -6,7 +6,7 @@ import Start from "./Start";
 
 export interface IProps {
   questions: Array<{
-    type: string;
+    component: string;
   }>;
 }
 

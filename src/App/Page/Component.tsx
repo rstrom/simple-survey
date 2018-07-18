@@ -1,17 +1,18 @@
-import { get } from "lodash";
 import * as React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export interface IProps {
   match: {
     params: {
-      pageNumber: number;
+      pageNumber: string;
     };
   };
-  questions: Array<{
-    type: string;
-  }>;
+  question: {
+    label: string;
+  };
+  responses: object;
+  handleBack(): void;
+  handleNext(): void;
 }
 
 const Page = styled.div`
@@ -19,18 +20,38 @@ const Page = styled.div`
   flex-direction: column;
 `;
 
+const Button = styled.button`
+  pointer-events: ${p => (p.disabled ? "none" : "auto")};
+`;
+
 const Component: React.ComponentType<IProps> = ({
   children,
+  handleBack,
+  handleNext,
   match: {
     params: { pageNumber }
   },
-  questions
+  question,
+  responses
 }) => (
   <Page>
+    <Button
+      className="back"
+      onClick={handleBack}
+      disabled={!responses[Number(pageNumber) - 1]}
+    >
+      Back
+    </Button>
     <h1>Page {pageNumber}</h1>
-    <p>{get(questions, `${pageNumber - 1}.label`, "Not found")}</p>
+    <p>{question.label}</p>
     {children}
-    <Link to={`/page/${Number(pageNumber) + 1}`}>Submit</Link>
+    <Button
+      className="next"
+      onClick={handleNext}
+      disabled={!responses[Number(pageNumber) - 1]}
+    >
+      Next
+    </Button>
   </Page>
 );
 

@@ -28,9 +28,9 @@ describe("User experience of responding to survey", () => {
     cy.get("button.back").should("have.attr", "disabled");
     cy.get("input").type("Satoshi");
     cy.get("button.back").should("not.have.attr", "disabled");
-    cy.get("button.back").click();
+    cy.get("button.back").click({ force: true });
     cy.location().should(loc => {
-      expect(loc.pathname).to.eq("/");
+      expect(loc.pathname).to.eq("/simple-survey/");
     });
   });
 
@@ -41,7 +41,7 @@ describe("User experience of responding to survey", () => {
     cy.get("button.next").should("not.have.attr", "disabled");
     cy.get("button.next").click();
     cy.location().should(loc => {
-      expect(loc.pathname).to.eq("/page/2");
+      expect(loc.pathname).to.eq("/simple-survey/page/2");
     });
   });
 
