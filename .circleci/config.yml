@@ -31,7 +31,7 @@ jobs:
           command: yarn build
       - run:
           name: Run tests
-          command: npx http-server -s -p 3000 & yarn test
+          command: npx ecstatic --root build --baseDir simple-survey --port 3000 & yarn test
       - deploy:
           name: Deploy
           command: |
